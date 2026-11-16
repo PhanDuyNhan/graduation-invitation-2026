@@ -2,6 +2,7 @@
   "title": "Lễ tốt nghiệp",
   "eyebrow": "A little note from my journey",
   "hostName": "",
+  "portrait": "/images/portrait-main.jpg",
   "fieldOfStudy": "Ngôn ngữ Anh",
   "graduationYear": "2026",
   "datetime": "",
@@ -13,7 +14,12 @@
   },
   "message": "Một chương học tập khép lại, một hành trình mới đang mở ra. Mình rất mong có bạn cùng lưu giữ ngày đặc biệt này.",
   "thankYou": "Cảm ơn bạn đã đồng hành cùng mình trên chặng đường này.",
-  "gallery": [],
+  "gallery": [
+    "/images/travel-01.jpg",
+    "/images/travel-02.jpg",
+    "/images/travel-03.jpg",
+    "/images/travel-04.jpg"
+  ],
   "defaultMusic": "",
   "contact": {
     "phone": "",

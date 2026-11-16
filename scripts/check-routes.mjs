@@ -21,6 +21,8 @@ try {
   assert.match(opened, /NGÔN NGỮ ANH/i)
   assert.match(opened, /Có bạn chung vui/)
   assert.match(opened, /Ngày và giờ sẽ cập nhật/)
+  assert.match(opened, /portrait-main\.jpg/)
+  assert.match(opened, /travel-04\.jpg/)
   console.log('Các route mẫu và route 404 hiển thị đúng')
 } finally {
   await server.close()

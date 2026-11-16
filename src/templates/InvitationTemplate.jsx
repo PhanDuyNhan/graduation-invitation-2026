@@ -33,7 +33,10 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
           <div className="letter-body">
             <p className="letter-dear">Dear {guest.name},</p>
             <p className="letter-intro">Một lời mời gửi từ hành trình của mình</p>
-            <h1>{event.title}<em>{event.graduationYear}</em></h1>
+            <div className="letter-feature">
+              <h1>{event.title}<em>{event.graduationYear}</em></h1>
+              {event.portrait && <figure className="letter-photo"><img src={event.portrait} alt="Ảnh chân dung người tốt nghiệp" /><figcaption>THE PERSON BEHIND THE POSTCARD</figcaption></figure>}
+            </div>
             <div className="letter-squiggle" aria-hidden="true">〰〰〰 ✳</div>
             <p className="letter-message">{guest.message || event.message}</p>
             <p className="letter-host">{event.hostName ? <>Mong được gặp bạn,<br /><strong>{event.hostName}</strong></> : <span className="pending-copy">Tên người tốt nghiệp sẽ cập nhật</span>}</p>

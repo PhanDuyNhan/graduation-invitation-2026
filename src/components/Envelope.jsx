@@ -7,7 +7,7 @@ export default function Envelope({ guest, event, onOpen }) {
       <p className="cover-kicker">A little note from my journey</p>
       <button className="postcard-cover" onClick={onOpen} aria-label={`Mở thiệp mời dành cho ${guest.name}`}>
         <span className="cover-topline"><span>POSTCARD / {event.graduationYear}</span><span>VIET NAM → EVERYWHERE</span></span>
-        <span className="cover-stamp" aria-hidden="true"><span>NEW<br />CHAPTER</span><small>{event.graduationYear}</small></span>
+        <span className={`cover-stamp ${event.portrait ? 'has-image' : ''}`} aria-hidden="true">{event.portrait ? <img src={event.portrait} alt="" /> : <span>NEW<br />CHAPTER</span>}<small>{event.graduationYear}</small></span>
         <span className="cover-postmark" aria-hidden="true">BON<br />VOYAGE<span>✳</span></span>
         <span className="cover-main">
           <span className="cover-small">TO: SOMEONE SPECIAL</span>

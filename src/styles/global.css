@@ -30,6 +30,9 @@ a { color: inherit; }
 .cover-bottomline { align-items: flex-end; padding-top: 14px; border-top: 1px solid #d7cbbb; }
 .cover-stamp { position: absolute; right: 44px; top: 67px; width: 109px; height: 119px; border: 6px dotted #fff9ed; outline: 1px solid #bc654b; background: #b9563b; color: #fff9ed; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); font-size: .76rem; font-weight: 700; letter-spacing: .13em; line-height: 1.45; }
 .cover-stamp small { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; line-height: 1; margin-top: 7px; }
+.cover-stamp.has-image { padding: 4px; }
+.cover-stamp.has-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1); }
+.cover-stamp.has-image small { position: absolute; bottom: 4px; right: 4px; margin: 0; padding: 2px 5px; background: #b9563b; color: #fff9ed; font-size: 1rem; }
 .cover-postmark { position: absolute; z-index: 2; right: 134px; top: 105px; color: #17515b; opacity: .62; font-size: .6rem; letter-spacing: .19em; text-align: center; line-height: 1.45; border: 2px solid #17515b; border-radius: 50%; width: 76px; height: 76px; padding-top: 16px; transform: rotate(-19deg); }
 .cover-postmark span { font-size: 1rem; display: block; }
 .cover-main { position: relative; z-index: 1; min-height: 270px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding-bottom: 22px; }
@@ -57,8 +60,12 @@ a { color: inherit; }
 .letter-body { padding: 86px 65px 72px; max-width: 670px; }
 .letter-dear { font-family: 'Caveat', cursive; font-size: clamp(2rem, 5vw, 2.75rem); color: var(--accent); margin: 0 0 34px; overflow-wrap: anywhere; }
 .letter-intro { font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; font-weight: 700; margin: 0 0 14px; }
+.letter-feature { display: grid; grid-template-columns: minmax(0, 1fr) 174px; gap: 18px; align-items: center; }
 .letter-body h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(3.7rem, 9vw, 6rem); font-weight: 500; line-height: .92; letter-spacing: -.04em; max-width: 480px; margin: 0; }
 .letter-body h1 em { display: block; font-weight: 400; color: var(--accent); margin-top: 7px; }
+.letter-photo { margin: 0 -21px 0 0; padding: 7px 7px 16px; background: #fffdf8; box-shadow: 3px 6px 17px #31474436; transform: rotate(5deg); position: relative; z-index: 1; }
+.letter-photo img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; }
+.letter-photo figcaption { margin-top: 12px; text-align: center; font-size: .43rem; font-weight: 700; letter-spacing: .08em; color: var(--accent); }
 .letter-squiggle { color: var(--accent); letter-spacing: .06em; margin: 28px 0; font-size: 1.35rem; }
 .letter-message { max-width: 460px; font-size: .92rem; line-height: 1.95; margin: 0; }
 .letter-host { margin: 39px 0 0; font-family: 'Caveat', cursive; font-size: 1.7rem; line-height: 1.15; color: var(--accent); }
@@ -137,6 +144,8 @@ a { color: inherit; }
   .letter-body { padding: 90px 33px 62px; }
   .letter-dear { max-width: 70%; }
   .letter-intro { font-size: .6rem; line-height: 1.7; }
+  .letter-feature { grid-template-columns: 1fr; gap: 30px; }
+  .letter-photo { width: min(180px, 80%); margin: 0 auto; }
   .letter-body h1 { font-size: clamp(3.8rem, 13vw, 5.2rem); }
   .letter-message { font-size: .83rem; }
   .ticket-section, .countdown-section, .gallery-section { padding: 76px 4px 0; }

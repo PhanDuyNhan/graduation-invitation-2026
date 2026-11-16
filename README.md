@@ -15,7 +15,7 @@ Mở `/invitation/khach-moi-mau` hoặc `/invitation/nguoi-than-mau`. Trang `/` 
 
 1. Sửa `src/data/event.json`: `hostName`, `fieldOfStudy`, `datetime`, `location.name`, `location.address`, `location.mapsUrl`, `message`, `thankYou` và `graduationYear`. `datetime` cần mốc có múi giờ, ví dụ `2026-12-20T18:00:00+07:00`. Để trống ngày thì phần đếm ngược ẩn; để trống URL bản đồ thì nút bản đồ ẩn.
 2. Sửa `src/data/guests.json`: thay hai khách mẫu bằng khách thật. Mỗi người cần `slug` duy nhất, `name`, `group`, `message`. `theme` có thể là `ink` hoặc `warm`. `group` dành để phân loại dữ liệu; hai nhóm mẫu dùng cùng bố cục, khác lời mời và màu.
-3. Nếu có ảnh, đặt vào `public/images/` rồi thêm đường dẫn như `"/images/anh-01.jpg"` trong `gallery`. Để mảng rỗng thì mục ảnh ẩn.
+3. Ảnh chân dung chính nằm tại `public/images/portrait-main.jpg` và được nối bằng trường `portrait`. Bốn ảnh du lịch nằm tại `travel-01.jpg` đến `travel-04.jpg` và được liệt kê trong `gallery`. Khi thêm ảnh, đặt vào `public/images/` rồi thêm đường dẫn như `"/images/travel-05.jpg"` vào cuối mảng. Để mảng rỗng thì mục ảnh ẩn.
 4. Nếu có nhạc được phép sử dụng, đặt vào `public/music/` và điền `defaultMusic`, hoặc `music` riêng cho từng khách. Để trống thì nút nhạc ẩn. Nhạc chỉ được thử phát sau khi khách mở thiệp; nếu trình duyệt chặn, khách có thể bấm nút nhạc.
 5. Sửa tiêu đề và mô tả mặc định trong `index.html` khi đã chốt thông tin. Tiêu đề tab của link cá nhân tự lấy tên khách và tên sự kiện.
 
