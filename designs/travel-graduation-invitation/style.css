@@ -28,11 +28,7 @@ a { color: inherit; }
 .cover-topline, .cover-bottomline { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; font-size: .57rem; font-weight: 700; letter-spacing: .18em; }
 .cover-topline { padding-bottom: 13px; border-bottom: 1px solid #d7cbbb; }
 .cover-bottomline { align-items: flex-end; padding-top: 14px; border-top: 1px solid #d7cbbb; }
-.cover-stamp { position: absolute; right: 44px; top: 67px; width: 109px; height: 119px; border: 6px dotted #fff9ed; outline: 1px solid #bc654b; background: #b9563b; color: #fff9ed; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); font-size: .76rem; font-weight: 700; letter-spacing: .13em; line-height: 1.45; }
-.cover-stamp small { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; line-height: 1; margin-top: 7px; }
-.cover-stamp.has-image { padding: 4px; }
-.cover-stamp.has-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1); }
-.cover-stamp.has-image small { position: absolute; bottom: 4px; right: 4px; margin: 0; padding: 2px 5px; background: #b9563b; color: #fff9ed; font-size: 1rem; }
+.cover-portrait { position: absolute; right: 44px; top: 67px; width: 109px; height: 119px; object-fit: cover; object-position: center top; border-radius: 4px 12px 5px 9px; transform: rotate(8deg); box-shadow: 3px 8px 15px #263d3d38; }
 .cover-postmark { position: absolute; z-index: 2; right: 134px; top: 105px; color: #17515b; opacity: .62; font-size: .6rem; letter-spacing: .19em; text-align: center; line-height: 1.45; border: 2px solid #17515b; border-radius: 50%; width: 76px; height: 76px; padding-top: 16px; transform: rotate(-19deg); }
 .cover-postmark span { font-size: 1rem; display: block; }
 .cover-main { position: relative; z-index: 1; min-height: 270px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding-bottom: 22px; }
@@ -132,8 +128,7 @@ a { color: inherit; }
   .postcard-screen { padding-top: 35px; }
   .postcard-cover { min-height: 440px; padding: 23px; }
   .cover-topline, .cover-bottomline { font-size: .5rem; }
-  .cover-stamp { width: 82px; height: 92px; right: 34px; top: 80px; font-size: .55rem; }
-  .cover-stamp small { font-size: 1.2rem; }
+  .cover-portrait { width: 82px; height: 92px; right: 34px; top: 80px; }
   .cover-postmark { right: 97px; top: 111px; width: 59px; height: 59px; padding-top: 11px; font-size: .45rem; }.cover-postmark span { font-size: .8rem; }
   .cover-main { min-height: 330px; }
   .cover-name { max-width: 100%; font-size: clamp(3.4rem, 13vw, 5.3rem); }
@@ -159,7 +154,7 @@ a { color: inherit; }
 }
 
 @media (max-width: 370px) {
-  .cover-stamp { right: 25px; }
+  .cover-portrait { right: 25px; }
   .cover-postmark { right: 89px; }
   .cover-name { font-size: 3.2rem; }
   .letter-body { padding-inline: 28px; }
