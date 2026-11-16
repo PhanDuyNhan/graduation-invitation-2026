@@ -1,0 +1,22 @@
+{
+  "title": "Lễ tốt nghiệp",
+  "eyebrow": "A little note from my journey",
+  "hostName": "",
+  "fieldOfStudy": "Ngôn ngữ Anh",
+  "graduationYear": "2026",
+  "datetime": "",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "location": {
+    "name": "",
+    "address": "",
+    "mapsUrl": ""
+  },
+  "message": "Một chương học tập khép lại, một hành trình mới đang mở ra. Mình rất mong có bạn cùng lưu giữ ngày đặc biệt này.",
+  "thankYou": "Cảm ơn bạn đã đồng hành cùng mình trên chặng đường này.",
+  "gallery": [],
+  "defaultMusic": "",
+  "contact": {
+    "phone": "",
+    "label": "Liên hệ"
+  }
+}

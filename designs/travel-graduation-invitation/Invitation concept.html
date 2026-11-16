@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dce5df">
+  <title>Travel Journal · Thiệp mời tốt nghiệp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .concept-hidden { display: none !important; }
+    .concept-back { position: fixed; z-index: 30; left: 18px; top: 18px; border: 1px solid #b9563b; border-radius: 20px 5px 18px 7px; background: #fff9ed; color: #174450; padding: 10px 15px; cursor: pointer; font: 700 .75rem 'DM Sans', sans-serif; }
+  </style>
+</head>
+<body>
+  <main id="cover" class="postcard-screen" data-screen-label="Bìa postcard">
+    <div class="cover-route" aria-hidden="true"><span>01</span><i></i><span>∞</span></div>
+    <p class="cover-kicker">A little note from my journey</p>
+    <button class="postcard-cover" type="button" data-open aria-label="Mở thiệp mời dành cho Khách mời mẫu">
+      <span class="cover-topline"><span>POSTCARD / 2026</span><span>VIET NAM → EVERYWHERE</span></span>
+      <span class="cover-stamp" aria-hidden="true"><span>NEW<br>CHAPTER</span><small>2026</small></span>
+      <span class="cover-postmark" aria-hidden="true">BON<br>VOYAGE<span>✳</span></span>
+      <span class="cover-main"><span class="cover-small">TO: SOMEONE SPECIAL</span><span class="cover-name">Khách mời mẫu</span><span class="cover-line" aria-hidden="true"></span><span class="cover-copy">Một hành trình khép lại.<br>Một hành trình mới bắt đầu.</span></span>
+      <span class="cover-bottomline"><span>Lễ tốt nghiệp</span><span>✳ &nbsp; WITH LOVE</span></span>
+    </button>
+    <button class="open-postcard" type="button" data-open>Mở tấm thiệp này <span aria-hidden="true">↗</span></button>
+    <p class="cover-footnote">A note to keep · A day to remember</p>
+  </main>
+
+  <main id="letter" class="journey-page concept-hidden" data-screen-label="Lời mời và vé tham dự">
+    <button class="concept-back" type="button" data-close>← Xem bìa</button>
+    <div class="journey-layout">
+      <p class="page-marginalia">Notes from the road <span>✳</span> 2026</p>
+      <article class="letter-sheet">
+        <header class="letter-header"><span>THE NEXT CHAPTER</span><span>VOL. 2026</span></header>
+        <div class="letter-stamp" aria-hidden="true">NGÔN NGỮ ANH<br>& EVERYWHERE <span>✳</span></div>
+        <div class="letter-body">
+          <p class="letter-dear">Dear Khách mời mẫu,</p>
+          <p class="letter-intro">Một lời mời gửi từ hành trình của mình</p>
+          <h1>Lễ tốt nghiệp <em>2026</em></h1>
+          <div class="letter-squiggle" aria-hidden="true">〰〰〰 ✳</div>
+          <p class="letter-message">Có bạn chung vui trong ngày này sẽ là một kỷ niệm thật đẹp.</p>
+          <p class="letter-host"><span class="pending-copy">Tên người tốt nghiệp sẽ cập nhật</span></p>
+        </div>
+        <div class="airmail-edge" aria-hidden="true"></div>
+      </article>
+      <section class="ticket-section" aria-labelledby="ticket-title"><div class="section-heading"><span class="section-number">01 / THE RENDEZVOUS</span><h2 id="ticket-title">Hẹn gặp bạn <em>ở điểm đến này.</em></h2></div><div class="ticket-card"><div class="ticket-main"><div class="ticket-heading"><span>BOARDING PASS</span><span>NGÔN NGỮ ANH · 2026</span></div><div class="ticket-columns"><div><span class="ticket-label">WHEN / THỜI GIAN</span><p class="ticket-pending">Ngày và giờ sẽ cập nhật</p></div><div><span class="ticket-label">WHERE / ĐỊA ĐIỂM</span><p class="ticket-pending">Địa điểm sẽ cập nhật</p></div></div></div><div class="ticket-stub" aria-hidden="true"><span>ADMIT ONE</span><b>✳</b><small>WITH LOVE</small></div></div></section>
+      <footer class="journey-footer"><div class="footer-mark" aria-hidden="true">✳</div><p>Cảm ơn bạn đã đồng hành cùng mình trên chặng đường này.</p><small>End of one chapter, beginning of everything.</small></footer>
+    </div>
+  </main>
+  <script>
+    const cover = document.getElementById('cover');
+    const letter = document.getElementById('letter');
+    document.querySelectorAll('[data-open]').forEach((button) => button.addEventListener('click', () => { cover.classList.add('concept-hidden'); letter.classList.remove('concept-hidden'); window.scrollTo(0, 0); }));
+    document.querySelector('[data-close]').addEventListener('click', () => { letter.classList.add('concept-hidden'); cover.classList.remove('concept-hidden'); window.scrollTo(0, 0); });
+  </script>
+</body>
+</html>

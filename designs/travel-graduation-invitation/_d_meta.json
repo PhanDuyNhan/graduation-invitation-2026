@@ -1,0 +1,18 @@
+{
+  "type": "design",
+  "designSystems": [],
+  "primaryDesignSystem": null,
+  "assets": {
+    "Invitation concept": {
+      "versions": [
+        {
+          "path": "Invitation concept.html",
+          "createdAt": "2026-11-16T07:31:37.417Z",
+          "status": "needs-review"
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-11-16T07:31:37.417Z",
+  "updatedAt": "2026-11-16T07:32:52.728Z"
+}

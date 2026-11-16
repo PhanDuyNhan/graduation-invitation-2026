@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "khach-moi-mau",
+    "name": "Khách mời mẫu",
+    "group": "friends",
+    "message": "Có bạn chung vui trong ngày này sẽ là một kỷ niệm thật đẹp.",
+    "theme": "ink"
+  },
+  {
+    "slug": "nguoi-than-mau",
+    "name": "Người thân mẫu",
+    "group": "family",
+    "message": "Cảm ơn vì luôn ở bên và động viên mình trên suốt chặng đường.",
+    "theme": "warm"
+  }
+]
