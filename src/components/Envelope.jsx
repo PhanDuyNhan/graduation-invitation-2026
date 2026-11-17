@@ -48,14 +48,6 @@ export default function Envelope({ guest, event, onOpen }) {
           <span className="recipient-route">A PERSONAL INVITATION · {event.fieldOfStudy || event.title}</span>
         </span>
       </button>
-
-      <button className="open-invitation" type="button" onClick={startOpening} disabled={opening}>
-        <span>{opening ? 'Đang mở thiệp' : 'Mở lời mời'}</span>
-        <span aria-hidden="true">↗</span>
-      </button>
-      <p className="cover-note" aria-live="polite">
-        {opening ? 'Một chương mới đang mở ra…' : 'Chạm để mở · Enter hoặc phím cách'}
-      </p>
     </motion.main>
   )
 }

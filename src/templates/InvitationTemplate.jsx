@@ -72,20 +72,13 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
       <MusicButton source={guest.music || event.defaultMusic} startSignal={musicSignal} />
 
       <div className="invitation-shell">
-        <header className="editorial-masthead">
-          <span>THE GRADUATE EDITION</span>
-          <span className="masthead-rule" aria-hidden="true" />
-          <span>VOL. {event.graduationYear}</span>
-        </header>
-
         <section className="invitation-hero" aria-labelledby="invitation-title">
-          <figure className="hero-portrait">
-            <Portrait source={event.portrait} alt="Ảnh chân dung người tốt nghiệp" />
-            <figcaption>
-              <span>PORTRAIT NO. 01</span>
-              <span>{event.fieldOfStudy || 'THE GRADUATE'}</span>
-            </figcaption>
-          </figure>
+          <div className="collage-banner" aria-hidden="true">
+            <strong>GRADUATION</strong>
+            <span>CLASS OF {event.graduationYear}</span>
+          </div>
+          <span className="collage-note" aria-hidden="true">MORE THAN<br />READY</span>
+          <span className="collage-ticket" aria-hidden="true">NEXT CHAPTER · {event.fieldOfStudy || 'THE GRADUATE'}</span>
 
           <div className="hero-copy">
             <p className="private-note">A private invitation for</p>
@@ -99,6 +92,14 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
               <strong className={!event.hostName ? 'is-placeholder' : ''}>{hostName}</strong>
             </div>
           </div>
+
+          <figure className="hero-portrait">
+            <Portrait source={event.portrait} alt="Ảnh chân dung người tốt nghiệp" />
+            <figcaption>
+              <span>PORTRAIT NO. 01</span>
+              <span>{event.fieldOfStudy || 'THE GRADUATE'}</span>
+            </figcaption>
+          </figure>
         </section>
 
         <section className="rendezvous" aria-labelledby="rendezvous-title">
