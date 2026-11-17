@@ -96,11 +96,11 @@ img { max-width: 100%; }
   display: block;
   border: 1px solid rgba(23, 60, 53, .14);
 }
-.envelope-back { border-radius: 4px 4px 12px 12px; background: #e6dece; }
+.envelope-back { border-radius: 1px; background: #e6dece; }
 .envelope-front {
   z-index: 4;
   clip-path: polygon(0 16%, 50% 62%, 100% 16%, 100% 100%, 0 100%);
-  border-radius: 0 0 12px 12px;
+  border-radius: 0;
   background:
     linear-gradient(135deg, rgba(23, 60, 53, .06), transparent 35%),
     linear-gradient(225deg, rgba(150, 69, 55, .05), transparent 38%),
@@ -117,7 +117,7 @@ img { max-width: 100%; }
   z-index: 5;
   transform-origin: top;
   clip-path: polygon(0 0, 100% 0, 50% 63%);
-  border-radius: 4px 4px 0 0;
+  border-radius: 0;
   background: #f8f3e8;
   transition: transform .58s cubic-bezier(.2, .72, .25, 1), z-index .1s .25s;
   backface-visibility: hidden;
@@ -212,7 +212,7 @@ img { max-width: 100%; }
   --accent: #964537;
   --ambient: #d8ded4;
   min-height: 100dvh;
-  padding: 24px;
+  padding: clamp(10px, 2.2vw, 30px);
   color: var(--ink);
   background: var(--ambient);
   background-image: radial-gradient(rgba(23,60,53,.12) .6px, transparent .6px);
@@ -222,9 +222,20 @@ img { max-width: 100%; }
 .invitation-shell {
   width: min(1180px, 100%);
   margin: 0 auto;
+  position: relative;
   overflow: hidden;
-  background: var(--cream);
-  box-shadow: 0 28px 70px rgba(24, 57, 49, .18);
+  border: 1px solid rgba(23, 60, 53, .18);
+  background-color: var(--cream);
+  background-image: repeating-linear-gradient(0deg, transparent 0 4px, rgba(82, 67, 47, .018) 4px 5px);
+  box-shadow: 0 2px 0 rgba(255,255,255,.65), 0 30px 75px rgba(24, 57, 49, .2);
+}
+.invitation-shell::before {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  inset: 9px;
+  border: 1px solid rgba(23, 60, 53, .1);
+  pointer-events: none;
 }
 .editorial-masthead {
   display: flex;
@@ -243,7 +254,7 @@ img { max-width: 100%; }
   min-height: 770px;
 }
 .hero-portrait { margin: 0; position: relative; min-width: 0; overflow: hidden; background: #d3d8d0; }
-.hero-portrait > img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 10%; filter: grayscale(1) contrast(.97); transform: scale(1.2); transform-origin: 50% 12%; }
+.hero-portrait > img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 10%; filter: grayscale(1) contrast(.97); transform: scale(1.42); transform-origin: 50% 8%; }
 .hero-portrait::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 80px rgba(18, 48, 42, .13); }
 .hero-portrait figcaption {
   position: absolute;
@@ -327,7 +338,7 @@ img { max-width: 100%; }
 }
 .section-intro h2 em, .countdown-section h2 em, .memories-heading h2 em { color: var(--accent); font-weight: 400; }
 .section-intro > p, .memories-heading > p { max-width: 385px; margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.85; }
-.event-ledger { align-self: center; padding: 28px 32px 23px; border: 1px solid rgba(23, 60, 53, .34); background: var(--paper); box-shadow: 10px 12px 0 rgba(23,60,53,.07); }
+.event-ledger { align-self: center; padding: 28px 5px 23px; border-block: 1px solid rgba(23, 60, 53, .42); background: transparent; }
 .ledger-heading { display: flex; justify-content: space-between; gap: 22px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,60,53,.23); color: var(--accent); font-size: .55rem; font-weight: 700; letter-spacing: .17em; line-height: 1.5; }
 .event-ledger dl { margin: 0; }
 .event-ledger dl > div { display: grid; grid-template-columns: 138px 1fr; gap: 20px; padding: 27px 0; border-bottom: 1px dashed rgba(23,60,53,.25); }
@@ -427,7 +438,8 @@ img { max-width: 100%; }
   .recipient-route { max-width: 90%; font-size: .44rem; }
   .wax-seal { width: 43px; height: 43px; font-size: .85rem; }
   .open-invitation { margin-top: 32px; }
-  .invitation-page { padding: 0; }
+  .invitation-page { padding: 8px; }
+  .invitation-shell::before { inset: 5px; }
   .editorial-masthead { padding: 21px 18px; gap: 11px; font-size: .48rem; }
   .hero-portrait { min-height: 540px; }
   .hero-copy { min-height: auto; padding: 74px 26px 82px; }
@@ -436,7 +448,7 @@ img { max-width: 100%; }
   .hero-copy h1 em { margin-left: 26%; }
   .rendezvous, .countdown-section, .memories-section { padding: 85px 24px; }
   .section-intro h2, .countdown-section h2, .memories-heading h2 { font-size: clamp(3.3rem, 16vw, 4.6rem); }
-  .event-ledger { padding: 22px 18px 18px; }
+  .event-ledger { padding: 22px 4px 18px; }
   .ledger-heading { font-size: .46rem; }
   .event-ledger dl > div { grid-template-columns: 1fr; gap: 13px; }
   .countdown { grid-template-columns: repeat(2, 1fr); }
