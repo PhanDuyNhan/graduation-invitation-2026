@@ -33,7 +33,7 @@ function InvitationExperience({ guest }) {
       {opened ? (
         <InvitationTemplate key="opened" event={event} guest={guest} musicSignal={musicSignal} />
       ) : (
-        <Envelope key="closed" event={event} guest={guest} onOpen={openInvitation} />
+        <Envelope key="closed" guest={guest} onOpen={openInvitation} />
       )}
     </AnimatePresence>
   )

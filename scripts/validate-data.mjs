@@ -21,4 +21,8 @@ for (const image of [event.portrait, ...event.gallery].filter(Boolean)) {
   }
 }
 
+if (!existsSync(new URL('../public/images/envelope/opening-sequence.png', import.meta.url))) {
+  throw new Error('Thiếu ảnh chuỗi mở phong thư: opening-sequence.png')
+}
+
 console.log(`Dữ liệu hợp lệ: ${guests.length} khách mời`)
