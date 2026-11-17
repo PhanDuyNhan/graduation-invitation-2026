@@ -65,18 +65,12 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
   return (
     <motion.main
       className={`invitation-page theme-${guest.theme || 'ink'}`}
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 1, y: 0 }}
     >
       <MusicButton source={guest.music || event.defaultMusic} startSignal={musicSignal} />
 
       <div className="invitation-shell">
         <section className="invitation-hero" aria-labelledby="invitation-title">
-          <div className="collage-banner" aria-hidden="true">
-            <strong>GRADUATION</strong>
-            <span>CLASS OF {event.graduationYear}</span>
-          </div>
           <div className="hero-copy">
             <p className="private-note">A private invitation for</p>
             <p className="guest-name">{guest.name}</p>

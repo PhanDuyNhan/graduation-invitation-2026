@@ -25,6 +25,9 @@ img { max-width: 100%; }
 :focus-visible { outline: 2px solid #d98b77; outline-offset: 5px; }
 
 .envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
   min-height: 100dvh;
   display: flex;
   align-items: center;
@@ -45,7 +48,7 @@ img { max-width: 100%; }
   cursor: pointer;
 }
 .envelope-art {
-  width: min(780px, 105vw);
+  width: min(560px, 105vw);
   position: relative;
   display: block;
   flex: none;
@@ -65,6 +68,25 @@ img { max-width: 100%; }
   inset: 0 0 auto;
   background: #fff;
   pointer-events: none;
+}
+.paper-reveal {
+  position: fixed;
+  z-index: 2;
+  top: 38%;
+  left: 50%;
+  width: min(520px, 78vw);
+  aspect-ratio: 1536 / 2752;
+  border-radius: 9px;
+  background: #fff8ee url('/images/invitation-background.png') center top / cover no-repeat;
+  box-shadow: 0 18px 45px rgba(57, 39, 20, .18);
+  opacity: 0;
+  transform: translate(-50%, -18%) scale(.28) rotate(-2deg);
+  transition: transform .72s cubic-bezier(.18, .75, .22, 1), opacity .12s ease;
+  pointer-events: none;
+}
+.paper-reveal.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(5.2) rotate(0);
 }
 .envelope.is-opening { cursor: progress; }
 .invitation-page {
@@ -89,22 +111,6 @@ img { max-width: 100%; }
   background-image: repeating-linear-gradient(0deg, transparent 0 4px, rgba(82, 67, 47, .018) 4px 5px);
   box-shadow: 0 2px 0 rgba(255,255,255,.65), 0 30px 75px rgba(24, 57, 49, .2);
 }
-.invitation-shell::before {
-  content: '';
-  position: absolute;
-  z-index: 10;
-  inset: 9px;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) left top / 36px 1px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) left top / 1px 36px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) right top / 36px 1px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) right top / 1px 36px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) left bottom / 36px 1px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) left bottom / 1px 36px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) right bottom / 36px 1px no-repeat,
-    linear-gradient(rgba(23,60,53,.2), rgba(23,60,53,.2)) right bottom / 1px 36px no-repeat;
-}
 .invitation-hero {
   min-height: 100dvh;
   position: relative;
@@ -112,51 +118,28 @@ img { max-width: 100%; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(34px, 5vw, 62px) clamp(28px, 8vw, 110px) clamp(42px, 6vw, 72px);
+  padding: clamp(145px, 38vw, 450px) clamp(36px, 8vw, 110px) clamp(160px, 38vw, 450px);
   overflow: hidden;
   background:
-    linear-gradient(105deg, transparent 0 68%, rgba(23, 60, 53, .035) 68% 68.3%, transparent 68.3%),
-    radial-gradient(circle at 18% 72%, rgba(198, 184, 75, .12), transparent 22%),
-    repeating-linear-gradient(0deg, transparent 0 4px, rgba(82, 67, 47, .018) 4px 5px),
-    var(--paper);
+    linear-gradient(90deg, transparent calc(3.65% - 1px), #d7b57b calc(3.65% - 1px) calc(3.65% + 1px), transparent calc(3.65% + 1px)),
+    linear-gradient(90deg, transparent calc(96.35% - 1px), #d7b57b calc(96.35% - 1px) calc(96.35% + 1px), transparent calc(96.35% + 1px)),
+    #fff8ee;
 }
+.invitation-hero::before,
 .invitation-hero::after {
   content: '';
   position: absolute;
-  z-index: -1;
-  inset: 0;
-  opacity: .2;
+  z-index: 0;
+  left: 0;
+  right: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+  background-image: url('/images/invitation-background.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
-.collage-banner {
-  width: min(640px, 88%);
-  z-index: 2;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: clamp(70px, 10vw, 120px);
-  padding: 20px clamp(20px, 4vw, 40px);
-  clip-path: polygon(0 4px, 7% 0, 25% 3px, 48% 0, 72% 4px, 100% 0, calc(100% - 4px) 100%, 74% calc(100% - 3px), 45% 100%, 18% calc(100% - 2px), 0 100%);
-  color: var(--cream);
-  background: var(--forest);
-  box-shadow: 12px 13px 0 rgba(198, 184, 75, .46);
-  transform: rotate(-.7deg);
-}
-.collage-banner::before {
-  content: '';
-  position: absolute;
-  width: 76px;
-  height: 24px;
-  left: 50%;
-  top: -11px;
-  background: rgba(198, 184, 75, .78);
-  transform: translateX(-50%) rotate(2deg);
-}
-.collage-banner strong { font-size: clamp(1.55rem, 4vw, 3.2rem); letter-spacing: -.04em; line-height: .9; }
-.collage-banner span { font-size: .58rem; font-weight: 700; letter-spacing: .18em; white-space: nowrap; }
+.invitation-hero::before { top: 0; aspect-ratio: 1536 / 1000; background-position: center top; }
+.invitation-hero::after { bottom: 0; aspect-ratio: 1536 / 800; background-position: center bottom; }
+.invitation-hero > * { position: relative; z-index: 1; }
 .hero-portrait {
   width: min(350px, 44vw);
   aspect-ratio: 4 / 5;
@@ -196,7 +179,6 @@ img { max-width: 100%; }
   text-align: center;
   background: transparent;
 }
-.hero-copy::before { content: '01'; position: absolute; top: 0; right: 0; color: var(--accent); font: 500 1rem 'Cormorant Garamond', Georgia, serif; }
 .private-note { margin: 0; color: var(--accent); font-size: .59rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
 .guest-name {
   margin: 7px 0 24px;
@@ -340,15 +322,9 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 620px) {
-  .envelope-art { width: 105vw; }
-  .invitation-shell::before { inset: 5px; }
-  .invitation-hero { padding: 28px 20px 42px; }
-  .collage-banner { width: 94%; gap: 12px; margin-bottom: 72px; padding: 16px 18px; }
-  .collage-banner strong { font-size: clamp(1.3rem, 7.5vw, 2.1rem); }
-  .collage-banner span { font-size: .46rem; letter-spacing: .12em; }
+  .invitation-hero { padding-inline: 36px; }
   .hero-portrait { width: min(250px, 68vw); margin-top: 72px; border-width: 7px; }
   .hero-copy { min-height: auto; padding: 0; }
-  .hero-copy::before { top: -34px; right: 0; }
   .hero-copy h1 { font-size: clamp(4rem, 20vw, 6rem); }
   .hero-copy h1 em { margin-left: 0; }
   .rendezvous, .countdown-section, .memories-section { padding: 85px 24px; }

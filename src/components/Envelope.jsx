@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const sprite = '/images/envelope/opening-sequence.png'
+const invitationBackground = '/images/invitation-background.png'
 const cropX = [44, 620, 1192]
 const cropY = [-80, 420, 905, 1370, 1815]
 const topMask = [0, 25, 38, 58, 80]
@@ -10,14 +11,16 @@ const frameDuration = 95
 export default function Envelope({ guest, onOpen }) {
   const [frame, setFrame] = useState(0)
   const [opening, setOpening] = useState(false)
+  const [revealing, setRevealing] = useState(false)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
     let active = true
-    const image = new Image()
-    image.src = sprite
-    const loaded = image.decode ? image.decode().catch(() => undefined) : Promise.resolve()
-    loaded.then(() => {
+    Promise.all([sprite, invitationBackground].map((src) => {
+      const image = new Image()
+      image.src = src
+      return image.decode ? image.decode().catch(() => undefined) : Promise.resolve()
+    })).then(() => {
       if (active) setReady(true)
     })
     return () => { active = false }
@@ -28,9 +31,12 @@ export default function Envelope({ guest, onOpen }) {
     const frameTimers = Array.from({ length: 14 }, (_, index) =>
       window.setTimeout(() => setFrame(index + 1), (index + 1) * frameDuration)
     )
-    const finishTimer = window.setTimeout(onOpen, 1410)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const revealTimer = window.setTimeout(() => setRevealing(true), 14 * frameDuration + 40)
+    const finishTimer = window.setTimeout(onOpen, 14 * frameDuration + (reduceMotion ? 100 : 790))
     return () => {
       frameTimers.forEach(window.clearTimeout)
+      window.clearTimeout(revealTimer)
       window.clearTimeout(finishTimer)
     }
   }, [opening, ready, onOpen])
@@ -44,7 +50,7 @@ export default function Envelope({ guest, onOpen }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.16 }}
+      transition={{ duration: 0.32 }}
     >
       <button
         className={`envelope ${opening ? 'is-opening' : ''}`}
@@ -66,6 +72,7 @@ export default function Envelope({ guest, onOpen }) {
           <span className="envelope-top-mask" style={{ height: `${topMask[row] / 520 * 100}%` }} />
         </span>
       </button>
+      <span className={`paper-reveal ${revealing ? 'is-visible' : ''}`} aria-hidden="true" />
     </motion.main>
   )
 }

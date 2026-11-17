@@ -29,7 +29,7 @@ function InvitationExperience({ guest }) {
   }
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync">
       {opened ? (
         <InvitationTemplate key="opened" event={event} guest={guest} musicSignal={musicSignal} />
       ) : (

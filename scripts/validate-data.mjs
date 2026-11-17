@@ -25,4 +25,8 @@ if (!existsSync(new URL('../public/images/envelope/opening-sequence.png', import
   throw new Error('Thiếu ảnh chuỗi mở phong thư: opening-sequence.png')
 }
 
+if (!existsSync(new URL('../public/images/invitation-background.png', import.meta.url))) {
+  throw new Error('Thiếu ảnh nền thiệp: invitation-background.png')
+}
+
 console.log(`Dữ liệu hợp lệ: ${guests.length} khách mời`)

@@ -21,6 +21,10 @@ Mở `/invitation/khach-moi-mau` hoặc `/invitation/nguoi-than-mau`. Trang `/` 
 
 Bìa thư dùng bảng 15 khung hình `public/images/envelope/opening-sequence.png`. Giao diện cắt từng ô từ bảng ảnh khi chạy, phát theo thứ tự trái sang phải, trên xuống dưới trong khoảng 1,3 giây rồi chuyển ngay vào nội dung thiệp. Ảnh gốc được giữ nguyên trong một file để không phải tải 15 file riêng.
 
+Trang đầu của nội dung thiệp dùng `public/images/invitation-background.png` làm nền. Phần họa tiết đầu và cuối giữ đúng tỷ lệ ảnh; khung viền ở giữa kéo dài theo nội dung trên từng màn hình.
+
+Sau khung cuối của phong bì, một tờ thiệp dùng cùng ảnh nền phóng lớn vào trang mời. Hiệu ứng này không thay đổi bộ 15 khung hình của phong bì.
+
 Không đưa dữ liệu riêng tư vào `guests.json`: file này nằm trong bản build và người truy cập có thể đọc được. Link theo `slug` không phải cơ chế bảo mật.
 
 ## RSVP
