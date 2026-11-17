@@ -1,24 +1,73 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export default function Envelope({ guest, event, onOpen }) {
+  const [opening, setOpening] = useState(false)
+  const timerRef = useRef(null)
+  const reduceMotion = useReducedMotion()
+
+  useEffect(() => () => window.clearTimeout(timerRef.current), [])
+
+  function startOpening() {
+    if (opening) return
+    setOpening(true)
+
+    if (reduceMotion) {
+      onOpen()
+      return
+    }
+
+    timerRef.current = window.setTimeout(onOpen, 760)
+  }
+
   return (
-    <motion.main className="postcard-screen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, rotate: -2, y: -25 }} transition={{ duration: 0.45 }}>
-      <div className="cover-route" aria-hidden="true"><span>01</span><i></i><span>∞</span></div>
-      <p className="cover-kicker">A little note from my journey</p>
-      <button className="postcard-cover" onClick={onOpen} aria-label={`Mở thiệp mời dành cho ${guest.name}`}>
-        <span className="cover-topline"><span>POSTCARD / {event.graduationYear}</span><span>VIET NAM → EVERYWHERE</span></span>
-        {event.portrait && <img className="cover-portrait" src={event.portrait} alt="" aria-hidden="true" />}
-        <span className="cover-postmark" aria-hidden="true">BON<br />VOYAGE<span>✳</span></span>
-        <span className="cover-main">
-          <span className="cover-small">TO: SOMEONE SPECIAL</span>
-          <span className="cover-name">{guest.name}</span>
-          <span className="cover-line" aria-hidden="true"></span>
-          <span className="cover-copy">Một hành trình khép lại.<br />Một hành trình mới bắt đầu.</span>
+    <motion.main
+      className="envelope-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 1.015 }}
+      transition={{ duration: 0.45 }}
+    >
+      <div className="cover-masthead" aria-hidden="true">
+        <span>PRIVATE CORRESPONDENCE</span>
+        <i />
+        <span>CLASS OF {event.graduationYear}</span>
+      </div>
+
+      <div className="cover-intro">
+        <p>A note for the next chapter</p>
+        <span>01 — VIET NAM</span>
+      </div>
+
+      <button
+        className={`envelope ${opening ? 'is-opening' : ''}`}
+        type="button"
+        onClick={startOpening}
+        aria-label={`Mở thiệp mời dành cho ${guest.name}`}
+        aria-busy={opening}
+      >
+        <span className="envelope-back" aria-hidden="true" />
+        <span className="invitation-slip" aria-hidden="true">
+          <span>GRADUATION INVITATION</span>
+          <strong>{event.graduationYear}</strong>
         </span>
-        <span className="cover-bottomline"><span>{event.title}</span><span>✳ &nbsp; WITH LOVE</span></span>
+        <span className="envelope-flap" aria-hidden="true" />
+        <span className="envelope-front" aria-hidden="true" />
+        <span className="recipient-panel">
+          <span className="recipient-label">DÀNH RIÊNG CHO</span>
+          <strong>{guest.name}</strong>
+          <span className="recipient-route">A PERSONAL INVITATION · {event.fieldOfStudy || event.title}</span>
+        </span>
+        <span className="wax-seal" aria-hidden="true">26</span>
       </button>
-      <button className="open-postcard" onClick={onOpen}>Mở tấm thiệp này <span aria-hidden="true">↗</span></button>
-      <p className="cover-footnote">A note to keep · A day to remember</p>
+
+      <button className="open-invitation" type="button" onClick={startOpening} disabled={opening}>
+        <span>{opening ? 'Đang mở thiệp' : 'Mở lời mời'}</span>
+        <span aria-hidden="true">↗</span>
+      </button>
+      <p className="cover-note" aria-live="polite">
+        {opening ? 'Một chương mới đang mở ra…' : 'Chạm để mở · Enter hoặc phím cách'}
+      </p>
     </motion.main>
   )
 }
