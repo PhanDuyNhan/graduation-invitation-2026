@@ -72,21 +72,11 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
       <MusicButton source={guest.music || event.defaultMusic} startSignal={musicSignal} />
 
       <div className="invitation-shell">
-        <header className="editorial-masthead">
-          <span>THE GRADUATE EDITION</span>
-          <span className="masthead-rule" aria-hidden="true" />
-          <span>VOL. {event.graduationYear}</span>
-        </header>
-
         <section className="invitation-hero" aria-labelledby="invitation-title">
-          <figure className="hero-portrait">
-            <Portrait source={event.portrait} alt="Ảnh chân dung người tốt nghiệp" />
-            <figcaption>
-              <span>PORTRAIT NO. 01</span>
-              <span>{event.fieldOfStudy || 'THE GRADUATE'}</span>
-            </figcaption>
-          </figure>
-
+          <div className="collage-banner" aria-hidden="true">
+            <strong>GRADUATION</strong>
+            <span>CLASS OF {event.graduationYear}</span>
+          </div>
           <div className="hero-copy">
             <p className="private-note">A private invitation for</p>
             <p className="guest-name">{guest.name}</p>
@@ -99,11 +89,14 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
               <strong className={!event.hostName ? 'is-placeholder' : ''}>{hostName}</strong>
             </div>
           </div>
+
+          <figure className="hero-portrait">
+            <Portrait source={event.portrait} alt="Ảnh chân dung người tốt nghiệp" />
+          </figure>
         </section>
 
         <section className="rendezvous" aria-labelledby="rendezvous-title">
           <div className="section-intro">
-            <span className="section-index">01 / THE RENDEZVOUS</span>
             <h2 id="rendezvous-title">Hẹn gặp bạn<br /><em>ở điểm đến này.</em></h2>
             <p>Ngày đặc biệt sẽ trọn vẹn hơn khi có những người đã đồng hành cùng mình ở đó.</p>
           </div>
@@ -130,7 +123,6 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
 
         {date && (
           <section className="countdown-section" aria-labelledby="countdown-title">
-            <span className="section-index">02 / UNTIL WE MEET</span>
             <h2 id="countdown-title">Đếm từng ngày<br /><em>đến lúc gặp nhau.</em></h2>
             <Countdown datetime={event.datetime} />
           </section>
@@ -139,7 +131,6 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
         {photos.length > 0 && (
           <section className="memories-section" aria-labelledby="memories-title">
             <div className="memories-heading">
-              <span className="section-index">{date ? '03' : '02'} / PLACES ALONG THE WAY</span>
               <h2 id="memories-title">Những nơi<br /><em>mình đã đi qua.</em></h2>
               <p>Vài lát cắt từ hành trình cũ, trước khi một chân trời khác bắt đầu.</p>
             </div>
