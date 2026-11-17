@@ -67,7 +67,7 @@ export default function InvitationTemplate({ event, guest, musicSignal }) {
       className={`invitation-page theme-${guest.theme || 'ink'}`}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
     >
       <MusicButton source={guest.music || event.defaultMusic} startSignal={musicSignal} />
 

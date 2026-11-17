@@ -17,7 +17,7 @@ export default function Envelope({ guest, event, onOpen }) {
       return
     }
 
-    timerRef.current = window.setTimeout(onOpen, 760)
+    timerRef.current = window.setTimeout(onOpen, 1250)
   }
 
   return (
@@ -26,7 +26,7 @@ export default function Envelope({ guest, event, onOpen }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 1.015 }}
-      transition={{ duration: 0.45 }}
+      transition={{ duration: 0.55 }}
     >
       <div className="cover-masthead" aria-hidden="true">
         <span>PRIVATE CORRESPONDENCE</span>
