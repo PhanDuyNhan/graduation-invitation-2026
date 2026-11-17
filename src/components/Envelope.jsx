@@ -28,17 +28,6 @@ export default function Envelope({ guest, event, onOpen }) {
       exit={{ opacity: 0, scale: 1.015 }}
       transition={{ duration: 0.55 }}
     >
-      <div className="cover-masthead" aria-hidden="true">
-        <span>PRIVATE CORRESPONDENCE</span>
-        <i />
-        <span>CLASS OF {event.graduationYear}</span>
-      </div>
-
-      <div className="cover-intro">
-        <p>A note for the next chapter</p>
-        <span>01 — VIET NAM</span>
-      </div>
-
       <button
         className={`envelope ${opening ? 'is-opening' : ''}`}
         type="button"
@@ -58,7 +47,6 @@ export default function Envelope({ guest, event, onOpen }) {
           <strong>{guest.name}</strong>
           <span className="recipient-route">A PERSONAL INVITATION · {event.fieldOfStudy || event.title}</span>
         </span>
-        <span className="wax-seal" aria-hidden="true">26</span>
       </button>
 
       <button className="open-invitation" type="button" onClick={startOpening} disabled={opening}>
